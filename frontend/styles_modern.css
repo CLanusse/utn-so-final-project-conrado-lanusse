@@ -68,6 +68,16 @@ tr:last-child td {
     border-bottom: none;
 }
 
+input {
+    width: 300px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
 @media (max-width: 500px) {
     table {
         width: 98vw;

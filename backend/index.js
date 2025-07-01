@@ -19,6 +19,18 @@ app.get("/api/students", async (req, res) => {
     res.status(500).send("DB error");
   }
 });
+app.get("/api/greet", async (req, res) => {
+  try {
+    const { name } = req.query;
+    if (!name) {
+      throw new Error("Name parameter is required");
+    }
+    res.json({ message: `¡Hola, ${name}!`});
+  } catch (err) {
+    console.error(err);
+    res.status(400).send(err.message);
+  }
+});
 
 // Start the server
 app.listen(port, () => console.log(`App running on port ${port}`));

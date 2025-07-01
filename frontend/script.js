@@ -9,3 +9,21 @@ document.getElementById("loadButton").addEventListener("click", async () => {
     tbody.appendChild(row);
   });
 });
+
+document.getElementById("greetingBtn").addEventListener("click", async () => {
+  const name = document.getElementById("nameInput").value;
+  if (!name) {
+    alert("Por favor, ingresa tu nombre.");
+    return;
+  }
+
+  const response = await fetch(`/api/greet?name=${encodeURIComponent(name)}`);
+  if (!response.ok) {
+    const error = await response.text();
+    alert(`Error: ${error}`);
+    return;
+  }
+
+  const data = await response.json();
+  document.getElementById("greetingMessage").textContent = data.message;
+});
